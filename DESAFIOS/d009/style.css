@@ -1,0 +1,19 @@
+*{
+    margin: o;
+    box-sizing: border-box;
+    
+    
+}
+
+h1{
+    text-align: center;
+}
+
+#container{
+    margin-left: 250px  ;
+    align-items: center;
+}
+
+#seta{
+    margin-left: 500px ;
+}

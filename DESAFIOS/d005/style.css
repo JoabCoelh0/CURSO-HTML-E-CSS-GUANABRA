@@ -1,0 +1,14 @@
+body{
+    margin: 0;
+    box-sizing: border-box;
+    text-align: center;
+    
+}
+
+#imagem{
+    border-radius: 50%;
+}
+ul{
+    display: flex;
+    flex-direction: column;
+}
