@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lista de Compras</title>
+  <style>
+    body {
+      font-family: sans-serif;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 10px;
+      border-bottom: 1px solid #ccc;
+    }
+
+    li input[type="checkbox"] {
+      margin-right: 10px;
+    }
+
+    li label {
+      flex-grow: 1;
+    }
+
+    li button {
+      margin-left: 10px;
+    }
+
+    .visually-hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Lista de Compras</h1>
+  <ul id="lista-de-compras">
+    <!-- Itens da lista de compras serão exibidos aqui -->
+  </ul>
+  <form id="form-adicionar-item">
+    <label for="item">Item:</label>
+    <input type="text" id="item">
+    <button type="submit">Adicionar</button>
+  </form>
+
+  <script>
+    // Função para criar um novo item de lista
+    function criarItem(item) {
+      const li = document.createElement('li');
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      const label = document.createElement('label');
+      label.textContent = item;
+      const button = document.createElement('button');
+      button.textContent = 'Excluir';
+      button.addEventListener('click', function() {
+        li.remove();
+      });
+
+      li.appendChild(checkbox);
+      li.appendChild(label);
+      li.appendChild(button);
+
+      return li;
+    }
+
+    // Função para adicionar um novo item à lista de compras
+    const formAdicionarItem = document.getElementById('form-adicionar-item');
+    formAdicionarItem.addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const item = document.getElementById('item').value;
+      const novoItem = criarItem(item);
+
+      const listaDeCompras = document.getElementById('lista-de-compras');
+      listaDeCompras.appendChild(novoItem);
+
+      document.getElementById('item').value = '';
+    });
+
+    // Função para marcar um item como concluído
+    const listaDeCompras = document.getElementById('lista-de-compras');
+    listaDeCompras.addEventListener('change', function(e) {
+      const item = e.target.parentNode;
+      item.classList.toggle('visually-hidden');
+    });
+  </script>
+</body>
+</html>
